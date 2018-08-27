@@ -2,7 +2,9 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res)=> {
+app.use(express.static(`${__dirname}/public`));
+
+app.get('/', (req, res) => {
   res.send({
     name: 'Andrew',
     likes: [
@@ -19,10 +21,11 @@ app.get('/about', (req, res) => {
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'Unable to handle request !',
-  })
-})
+  });
+});
 
 // /bad - send back json with errorMessage
 
-app.listen(3000);
-
+app.listen(3000, () => {
+  console.log('Server is up on port 3000');
+});
