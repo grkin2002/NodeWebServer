@@ -10,7 +10,7 @@ hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
 });
 
-hbs.registerHelper('screamIt', text => {
+hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
 });
 
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   const now = new Date().toString();
   const log = `${now}:${req.method}: ${req.url}`;
   console.log(log);
-  fs.appendFile('server.log', `${log}\n`, err => {
+  fs.appendFile('server.log', `${log}\n`, (err) => {
     if (err) {
       console.log('Unable to append to server.log');
     }
